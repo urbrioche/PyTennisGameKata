@@ -27,19 +27,16 @@ class TennisGame(object):
         return self.score_lookup[self.first_player_score_times] + ' all';
 
     def is_deuce(self):
-        times_ = self.first_player_score_times >= 3
-        return times_
+        return self.first_player_score_times >= 3
 
     def adv_state(self):
         return self.adv_player() + (' Adv' if self.is_adv() else ' Win')
 
     def is_score_different(self):
-        times = self.first_player_score_times != self.second_player_score_times
-        return times
+        return self.first_player_score_times != self.second_player_score_times
 
     def is_ready_for_win(self):
-        times_ = self.first_player_score_times > 3 or self.second_player_score_times > 3
-        return times_
+        return self.first_player_score_times > 3 or self.second_player_score_times > 3
 
     def normal_score(self):
         return self.score_lookup[self.first_player_score_times] + ' ' + self.score_lookup[
@@ -49,8 +46,7 @@ class TennisGame(object):
         return abs(self.first_player_score_times - self.second_player_score_times) == 1
 
     def adv_player(self):
-        adv_player = self.first_player_name if self.first_player_score_times > self.second_player_score_times else self.second_player_name
-        return adv_player
+        return self.first_player_name if self.first_player_score_times > self.second_player_score_times else self.second_player_name
 
     def first_player_score(self):
         self.first_player_score_times += 1
