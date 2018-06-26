@@ -6,7 +6,7 @@ from TennisGame import TennisGame
 class TennisGameTest(unittest.TestCase):
 
     def setUp(self):
-        self.game = TennisGame('Joey','Tom')
+        self.game = TennisGame('Joey', 'Tom')
 
     def test_love_all(self):
         self.score_should_be('love all')
@@ -55,6 +55,16 @@ class TennisGameTest(unittest.TestCase):
         self.given_first_player_score(4)
         self.given_second_player_score(3)
         self.score_should_be("Joey Adv")
+
+    def test_second_player_adv(self):
+        self.given_first_player_score(3)
+        self.given_second_player_score(4)
+        self.score_should_be("Tom Adv")
+
+    def test_first_player_win(self):
+        self.given_first_player_score(3)
+        self.given_second_player_score(5)
+        self.score_should_be("Tom Win")
 
     def given_second_player_score(self, times):
         for i in range(times):

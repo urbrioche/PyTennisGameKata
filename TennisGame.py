@@ -13,14 +13,18 @@ class TennisGame(object):
 
     def score(self):
         if self.first_player_score_time != self.second_player_score_time:
-            if self.first_player_score_time > 3:
+            if self.first_player_score_time > 3 or self.second_player_score_time > 3:
                 if abs(self.first_player_score_time - self.second_player_score_time)==1:
-                    return self.first_player_name + ' Adv'
+                    return self.adv_player_name() + ' Adv'
+                return self.adv_player_name()+' Win'
             return self.score_lookup[self.first_player_score_time]+' '+self.score_lookup[self.second_player_score_time]
 
         if self.first_player_score_time >= 3:
             return 'deuce'
         return self.score_lookup[self.first_player_score_time]+' all'
+
+    def adv_player_name(self):
+        return self.first_player_name if self.first_player_score_time > self.second_player_score_time else self.second_player_name
 
     def first_player_score(self):
         self.first_player_score_time += 1
